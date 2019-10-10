@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/lcndb?characterEncoding=utf8&useSSL=true&nullCatalogMeansCurrent=true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    listener:
+      simple:
+        retry:
+          ####开启消费者（程序出现异常的情况下会）进行重试
+          enabled: true
+          max-attempts: 5
+          max-interval: 5000ms
+        ###手动确认
+        acknowledge-mode: manual
